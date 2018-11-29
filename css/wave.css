@@ -1,0 +1,66 @@
+#container{
+  width:290px;
+  height:290px;
+  margin:200px auto 24px;
+  border-radius:50%;
+  overflow:hidden;
+  position:relative;
+  background: linear-gradient(to bottom, rgba(125,185,232,.2), rgba(30,87,153,.8));
+  opacity:1;
+}
+#wave-one{
+  background-color:steelblue;
+  width:400px;
+  height:500px;
+  border-radius:170px;
+  position:absolute;
+  left:50%;
+  margin-left:-200px;
+  top:100px;
+  opacity:.45;
+  z-index:10;
+  animation-name: loop;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+#wave-two{
+  background-color:steelblue;
+  width:400px;
+  height:500px;
+  border-radius:150px;
+  position:absolute;
+  left:50%;
+  margin-left:-150px;
+  top:100px;
+  opacity:.4;
+  z-index:10;
+  animation-name: loop;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+#wave-three{
+  background-color:steelblue;
+  width:400px;
+  height:500px;
+  border-radius:170px;
+  position:absolute;
+  left:50%;
+  margin-left:-220px;
+  top:80px;
+  opacity:.25;
+  z-index:10;
+  animation-name: loop;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loop{
+  0%{ transform: rotate(0deg); }
+  25%{ transform: rotate(90deg); }
+  50%{ transform: rotate(180deg); }
+  75%{ transform: rotate(270deg); }
+  100%{ transform: rotate(360deg); }
+}
