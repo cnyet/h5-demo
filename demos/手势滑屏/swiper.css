@@ -17,3 +17,10 @@
   background-color: #fff;
   font-size: 18px;
 }
+.wrapper-item:nth-child(even){
+  background-color: #eee;
+}
+.wrapper-item img{
+  width: auto;
+  height: 100%;
+}
