@@ -9,8 +9,8 @@
   position: relative;
   transform-style: preserve-3d;
   margin: 0 auto;
-  transition: transfrom 0.3s ease;
-  transform: rotate3d(0.1, 0.2, 0, 30deg);
+  transition: transform 1s ease;
+  transform: translateZ(-150px) rotateY(-15deg) rotateX(-15deg);
 }
 .wrapper-item{
   width: 100%;
@@ -51,6 +51,6 @@
 }
 .btn{
   padding: 5px 10px;
-  margin: 0 15px;
+  margin: 10px;
   cursor: pointer;
 }
