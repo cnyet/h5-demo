@@ -4,7 +4,7 @@ var btnObj = {
   name: '按钮',
   clickEvent: function(item, index){
     var styleObj = {
-      0: 'translateZ(-150px) rotateY(-15deg) rotateX(-15deg)',
+      0: 'translateZ(-150px) rotateY(-30deg) rotateX(-20deg)',
       1: 'translateZ(-150px) rotateY(0deg) rotateX(0deg)',
       2: 'translateZ(-150px) rotateY(0deg) rotateX(180deg)',
       3: 'translateZ(-100px) rotateY(90deg) rotateX(0deg)',

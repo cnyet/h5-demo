@@ -10,7 +10,7 @@
   transform-style: preserve-3d;
   margin: 0 auto;
   transition: transform 1s ease;
-  transform: translateZ(-150px) rotateY(-15deg) rotateX(-15deg);
+  transform: translateZ(-150px) rotateY(-30deg) rotateX(-20deg);
 }
 .wrapper-item{
   width: 100%;
