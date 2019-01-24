@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>banner视差效果</title>
+  <link rel="stylesheet" href="perspective.css">
+</head>
+
+<body>
+  <div class="perspective">
+    <div class="preserve3d" id="preserve3d">
+      <span class="preserve3d_img"></span>
+      <span class="preserve3d_text">测试文本</span>
+    </div>
+  </div>
+  <script type="text/javascript" src="../../js/jquery.min.js"></script>
+  <script type="text/javascript">
+  function init(element) {
+    var thisPX, thisPY, boxWidth, boxHeight;
+    $("#preserve3d").on('mouseenter', function() {
+      thisPX = $(this).offset().left;
+      thisPY = $(this).offset().top;
+      boxWidth = $(this).width();
+      boxHeight = $(this).height();
+      $(this).addClass("threeD");
+    }).on('mousemove', function(event) {
+      var mouseX = event.clientX - thisPX;
+      var mouseY = event.clientY - thisPY;
+      var X = boxWidth / 2 - mouseX;
+      var Y = mouseY - boxHeight / 2;
+      $(this).css({
+        "-webkit-transform": "rotateY(" + X / 50 + "deg) " + "rotateX(" + Y / 50 + "deg)"
+      })
+    }).on('mouseleave', function() {
+      $(this).removeClass("threeD");
+      $(this).css({
+        "-webkit-transform": "rotateY(0deg) rotateX(0deg)"
+      })
+    })
+  }
+  init();
+  </script>
+</body>
+
+</html>
