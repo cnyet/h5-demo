@@ -6,5 +6,5 @@ openBtn.addEventListener('click', function(){
 });
 
 closeBtn.addEventListener('click', function(){
-  document.querySelector('.page1').style.transform = 'rotateY(0deg)';
+  document.querySelector('.home').style.transform = 'rotateY(0deg)';
 });
