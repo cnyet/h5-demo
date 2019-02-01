@@ -1,0 +1,133 @@
+i{
+  font-style: normal;
+}
+.container{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #010233;
+  overflow: hidden;
+}
+.timeline {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.timeline_title {
+  position: relative;
+  padding: 30px 0 15px;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  color: #fff;
+}
+.timeline_title span{
+  display: block;
+  font-size: 18px;
+  line-height: 25px;
+}
+.timeline_title span:after{
+  content: "";
+  position: absolute;
+  width: 46px;
+  height: 1px;
+  background: #ff0000;
+  bottom: 0;
+  left: 50%;
+  margin-left: -23px;
+}
+.timeline_icon{
+  position: relative;
+  width: 51px;
+  height: 51px;
+  margin: 18px auto 0;
+}
+.timeline_icon svg {
+  width: 51px;
+  height: 51px;
+  stroke: #0084ff;
+  stroke-width: 2px;
+  fill: none;
+  stroke-dasharray: 400;
+}
+.timeline_list {
+  position: relative;
+  bottom: 0;
+  width: 450px;
+  height: 612px;
+  margin: 0 auto;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  color: #fff;
+}
+.timeline_line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: #0084ff;
+  top: 0;
+  left: 50%;
+}
+.timeline_item {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  z-index: 9;
+}
+.timeline_item b {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  margin: -4px 0 0 -4px;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 0 0 0 8px #0084ff;
+}
+.timeline_item_sp b {
+  background: #0084ff;
+  box-shadow: none;
+}
+.timeline_item_cnt {
+  flex: 1;
+  padding: 0 50px;
+}
+.timeline_item_cnt:nth-child(1){
+  text-align:right;
+};
+.timeline_item_cnt:nth-child(2){
+  text-align:left;
+};
+.timeline_item_cnt.flag{
+  width: 55px;
+  height: 36px;
+  
+}
+.timeline_item_cnt.flag i{
+  display: inline-block;
+  width: 55px;
+  height: 36px;
+  background-size: 100%;
+}
+.timeline_item_cnt.country{
+  font-size: 12px;
+  color: #66b5ff;
+}
+.timeline_line {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background: #0084ff;
+  top: 0;
+  left: 50%;
+}
+
