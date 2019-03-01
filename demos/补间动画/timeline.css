@@ -45,6 +45,9 @@ i{
   width: 51px;
   height: 51px;
   margin: 18px auto 0;
+  background: transparent url("../../images/icon_01.png") no-repeat;
+  background-position: center;
+  background-size: 30px 26px;
 }
 .timeline_icon svg {
   width: 51px;
@@ -57,8 +60,8 @@ i{
 .timeline_list {
   position: relative;
   bottom: 0;
-  width: 450px;
-  height: 612px;
+  width: 500px;
+  height: 720px;
   margin: 0 auto;
   padding: 30px 0;
   display: flex;
@@ -83,12 +86,12 @@ i{
 }
 .timeline_item b {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   left: 50%;
   top: 50%;
-  margin: -4px 0 0 -4px;
+  margin: -5px 0 0 -5px;
   z-index: 1;
   background: #fff;
   box-shadow: 0 0 0 8px #0084ff;
@@ -100,6 +103,8 @@ i{
 .timeline_item_cnt {
   flex: 1;
   padding: 0 50px;
+  height: 32px;
+  line-height: 32px;
 }
 .timeline_item_cnt:nth-child(1){
   text-align:right;
@@ -110,17 +115,23 @@ i{
 .timeline_item_cnt.flag{
   width: 55px;
   height: 36px;
-  
+  vertical-align: middle;
+}
+.timeline_item_cnt.time{
+  font-size: 20px;
 }
 .timeline_item_cnt.flag i{
   display: inline-block;
   width: 55px;
-  height: 36px;
+  height: 32px;
   background-size: 100%;
 }
 .timeline_item_cnt.country{
-  font-size: 12px;
+  font-size: 20px;
   color: #66b5ff;
+}
+.timeline_item_cnt.city{
+  font-size: 26px;
 }
 .timeline_line {
   position: absolute;
@@ -129,5 +140,14 @@ i{
   background: #0084ff;
   top: 0;
   left: 50%;
+}
+.flag_sin{
+  background: transparent url("../../images/icon_02.png") no-repeat;
+}
+.flag_us{
+  background: transparent url("../../images/icon_03.png") no-repeat;
+}
+.flag_uk{
+  background: transparent url("../../images/icon_04.png") no-repeat;
 }
 

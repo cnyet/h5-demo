@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  padding: 0
+}
+
+.arrange {
+  padding: 0 2%;
+  list-style-type: none
+}
+
+.arrange li {
+  border: 1px solid #dfdfdf;
+  height: 2em;
+  line-height: 2em;
+  padding-left: 2%
+}
