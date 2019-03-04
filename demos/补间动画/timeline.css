@@ -24,6 +24,7 @@ i{
   line-height: 45px;
   text-align: center;
   color: #fff;
+  animation: on_tl_title .5s 1.4s linear both;
 }
 .timeline_title span{
   display: block;
@@ -39,6 +40,7 @@ i{
   bottom: 0;
   left: 50%;
   margin-left: -23px;
+  animation: on_tl_line .5s 2s linear both;
 }
 .timeline_icon{
   position: relative;
@@ -48,6 +50,7 @@ i{
   background: transparent url("../../images/icon_01.png") no-repeat;
   background-position: center;
   background-size: 30px 26px;
+  animation: on_tl_icon 1.2s .5s linear both;
 }
 .timeline_icon svg {
   width: 51px;
@@ -55,7 +58,8 @@ i{
   stroke: #0084ff;
   stroke-width: 2px;
   fill: none;
-  stroke-dasharray: 400;
+  stroke-dasharray: 320;
+  animation: iconsvg .5s .9s linear both;
 }
 .timeline_list {
   position: relative;
@@ -76,6 +80,7 @@ i{
   background: #0084ff;
   top: 0;
   left: 50%;
+  animation: on_item_line 1.2s 2.5s linear both;
 }
 .timeline_item {
   position: relative;
@@ -83,6 +88,34 @@ i{
   display: flex;
   align-items: center;
   z-index: 9;
+  animation: on_tl_item .45s ease both;
+}
+.timeline_item:nth-child(1) {
+  animation-delay: 2.3s;
+}
+.timeline_item:nth-child(2) {
+  animation-delay: 2.3s;
+}
+.timeline_item:nth-child(3) {
+  animation-delay: 2.5s;
+}
+.timeline_item:nth-child(4) {
+  animation-delay: 2.7s;
+}
+.timeline_item:nth-child(5) {
+  animation-delay: 2.9s;
+}
+.timeline_item:nth-child(6) {
+  animation-delay: 3.1s;
+}
+.timeline_item:nth-child(7) {
+  animation-delay: 3.3s;
+}
+.timeline_item:nth-child(8) {
+  animation-delay: 3.5s;
+}
+.timeline_item:nth-child(9) {
+  animation-delay: 3.7s;
 }
 .timeline_item b {
   position: absolute;
@@ -140,6 +173,7 @@ i{
   background: #0084ff;
   top: 0;
   left: 50%;
+  animation: 
 }
 .flag_sin{
   background: transparent url("../../images/icon_02.png") no-repeat;
@@ -151,3 +185,61 @@ i{
   background: transparent url("../../images/icon_04.png") no-repeat;
 }
 
+@keyframes iconsvg {
+  0% {
+    stroke-dashoffset: 320;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes on_tl_title {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes on_tl_icon {
+  0% {
+    transform: translateY(400px);
+    opacity: 0;
+  }
+  66.6% {
+    transform: translateY(400px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes on_tl_line {
+  0% {
+    transform: scale(0, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes on_tl_item {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+@keyframes on_item_line {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
