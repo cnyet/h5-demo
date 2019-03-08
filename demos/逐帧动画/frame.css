@@ -1,0 +1,29 @@
+.frame-wrapper{
+  position: relative;
+  width: 200px;
+  height: 206px;
+  overflow: hidden;
+  margin: 50px auto;
+}
+.frame-content{
+  width: 200px;
+  height: 618px;
+  position: absolute;
+  background: transparent url("./sprite.png") no-repeat;
+  background-size: cover;
+  animation: step steps(1, end) 1.5s infinite;
+}
+@keyframes step {
+  0% {
+    background-position: 0 0;
+  }
+  33.33% {
+    background-position: 0 -206px;
+  }
+  66.66% {
+    background-position: 0 -412px;
+  }
+  100% {
+    background-position: 0 -618px;
+  }
+}
