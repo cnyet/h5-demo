@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>给body元素平铺水印背景</title>
+  <style type="text/css">
+  html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+</head>
+<body>
+
+<script>
+/**
+* 1. 创建canvas元素，并设置属性，填充需要显示的文字
+* 2. 将canvas元素转化为 base64 格式的图片
+* 3. 将 base64 图片设置为 body 节点的背景图
+* 优点：不影响页面性能
+* 缺点：可以在开发者模式下直接删除水印
+*/
+function addWaterMark(text) {
+  var waterMarkText = text.slice(0, 15);
+  var canvas = document.createElement('canvas');
+  canvas.width = 200;
+  canvas.height = 200;
+  var canvasContext = canvas.getContext('2d');
+  canvasContext.rotate(-40 * Math.PI / 180);
+  canvasContext.font = '20px Microsoft YaHei';
+  canvasContext.fillStyle = '#ccc';
+  canvasContext.textAlign = 'center';
+  canvasContext.textBaseline = 'middle';
+  canvasContext.fillText(waterMarkText, 10, 130);
+  var imgUrl = canvas.toDataURL('image/png');
+  document.body.style.backgroundImage = 'url('+ imgUrl +')';
+}
+addWaterMark('测试水印');
+</script>
+</body>
+</html>
