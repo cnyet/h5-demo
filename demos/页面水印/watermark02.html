@@ -3,16 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>监听body元素平铺水印背景</title>
   <style type="text/css">
-    html, body{
-      height: 100%;
+    #signature{
       margin: 0;
       padding: 0;
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      opacity: .5;
     }
   </style>
 </head>
 <body>
+  <figure id="signature"></figure>
+  <div>
+    <h1>Tracking Protection Study: Firefox gives you more control over ad trackers. </h1>
+    <h3>Welcome to the Tracking Protection Study page for </h3>
+    <h5>the Firefox browser. Here, you can learn more about how Firefox Enhanced Tracking Protection gives you more control and choices when it comes to ad trackers.</h5>
+    <p>Enhanced Tracking Protection is part of Firefox Content Blocking where you can choose the level of blocking that works best for you. It is a privacy technology designed to give you more power over invasive tracking of online activity by blocking requests to tracking domains.</p>
+    <p>The Tracking Protection Study found that Enhanced Tracking Protection demonstrated a 67.5% reduction in the number of HTTP cookies set during a crawl of the Alexa top 200 news sites.</p>
+    <p>Since Firefox does not download and render content from tracking domains, Enhanced Tracking Protection also enjoys performance benefits of a 44% average reduction in page load time and a 39% reduction in data usage in the Alexa top 200 news sites.</p>
+    <p>If you would like to read the Tracking Protection Study in full and see the results click here.</p>
+    <p>f you’re not a Firefox user and you’re looking for autonomy when it comes to your privacy, click here to download Firefox.</p>
+    <h1>Mozilla Reaction to U.S. v. Google </h1>
+    <h3>Today the US Department of Justice (“DOJ”) filed an </h3>
+    <h4>antitrust lawsuit against Google, alleging that it unlawfully maintains monopolies through anticompetitive and exclusionary practices in the search and search advertising markets. While we’re still examining the complaint our initial impressions are outlined below.</h4>
+    <p>Like millions of everyday internet users, we share concerns about how Big Tech’s growing power can deter innovation and reduce consumer choice. We believe that scrutiny of these issues is healthy, and critical if we’re going to build a better internet. We also know from firsthand experience there is no overnight solution to these complex issues. Mozilla’s origins are closely tied to the last major antitrust case against Microsoft in the nineties.</p>
+    <p>In this new lawsuit, the DOJ referenced Google’s search agreement with Mozilla as one example of Google’s monopolization of the search engine market in the United States. Small and independent companies such as Mozilla thrive by innovating, disrupting and providing users with industry leading features and services in areas like search. The ultimate outcomes of an antitrust lawsuit should not cause collateral damage to the very organizations – like Mozilla – best positioned to drive competition and protect the interests of consumers on the web.</p>
+    <p>For the past 20 years, Mozilla has been leading the fight for competition, innovation and consumer choice in the browser market and beyond. We have a long track record of creating innovative products and services that respect the privacy and security of consumers, and have successfully pushed the market to follow suit.</p>
+    <p>Unintended harm to smaller innovators from enforcement actions will be detrimental to the system as a whole, without any meaningful benefit to consumers — and is not how anyone will fix Big Tech. Instead, remedies must look at the ecosystem in its entirety, and allow the flourishing of competition and choice to benefit consumers.</p>
+    <p>We’ll be sharing updates as this matter proceeds.</p>
+  </div>
 <script>
 /**
 * 1. 创建canvas元素，并设置属性，填充需要显示的文字
@@ -23,7 +50,7 @@
 * 优点：不容易删除水印
 * 缺点：只兼容现代浏览器，过多的dom元素会卡顿
 */
-var targetNode = document.body || document.documentEelement;
+var targetNode = document.getElementById('signature');
 var config = {
   attributes: true,
   childList: true,
@@ -53,12 +80,12 @@ function addWaterMark(text) {
   var canvasContext = canvas.getContext('2d');
   canvasContext.rotate(-40 * Math.PI / 180);
   canvasContext.font = '20px Microsoft YaHei';
-  canvasContext.fillStyle = '#ccc';
+  canvasContext.fillStyle = '#ddd';
   canvasContext.textAlign = 'center';
   canvasContext.textBaseline = 'middle';
   canvasContext.fillText(waterMarkText, 10, 130);
   imgUrl = canvas.toDataURL('image/png');
-  document.body.style.backgroundImage = 'url('+ imgUrl +')';
+  targetNode.style.backgroundImage = 'url('+ imgUrl +')';
 }
 addWaterMark('测试水印');
 
