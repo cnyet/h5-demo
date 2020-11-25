@@ -5,23 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>监听body元素平铺水印背景</title>
   <style type="text/css">
-    #signature{
+    html, body{
       margin: 0;
       padding: 0;
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 9999;
-      opacity: .5;
     }
   </style>
 </head>
 <body>
-  <figure id="signature"></figure>
   <div>
     <h1>Tracking Protection Study: Firefox gives you more control over ad trackers. </h1>
     <h3>Welcome to the Tracking Protection Study page for </h3>
@@ -50,42 +40,48 @@
 * 优点：不容易删除水印
 * 缺点：只兼容现代浏览器，过多的dom元素会卡顿
 */
-var targetNode = document.getElementById('signature');
-var config = {
-  attributes: true,
-  childList: true,
-  subtree: true
-};
-var imgUrl = '';
-var callback = function (mutationsList, observer) {
-  for (var mutation of mutationsList) {
-    if (mutation.type === 'childList') {
-      console.log('dom节点发生改变');
-    } else if (mutation.type === 'attributes') {
-      targetNode.style.backgroundImage = 'url('+ imgUrl +')';
-      console.log(mutation.attributeName + '属性发生改变');
-    }
-  }
+function setTargetNode (targetNode, imgUrl) {
+  targetNode.style.position = 'releative'
+  targetNode.style.inset = 0
+  targetNode.style.zIndex = 9999
+  targetNode.style.pointerEvents = 'none'
+  targetNode.style.backgroundImage = `url(${imgUrl})`
 }
-// 创建一个观察器实例并传入回调函数
-var observer = new MutationObserver(callback);
-// 以上述配置开始观察目标节点
-observer.observe(targetNode, config);
 
 function addWaterMark(text) {
+  var targetNode = document.body || document.documentElement.getElementsByTagName('body').item(0);
   var waterMarkText = text.slice(0, 15);
+
   var canvas = document.createElement('canvas');
   canvas.width = 200;
   canvas.height = 200;
+
   var canvasContext = canvas.getContext('2d');
   canvasContext.rotate(-40 * Math.PI / 180);
   canvasContext.font = '20px Microsoft YaHei';
-  canvasContext.fillStyle = '#ddd';
+  canvasContext.fillStyle = 'rgba(167,172,178,.5)';
   canvasContext.textAlign = 'center';
   canvasContext.textBaseline = 'middle';
   canvasContext.fillText(waterMarkText, 10, 130);
-  imgUrl = canvas.toDataURL('image/png');
-  targetNode.style.backgroundImage = 'url('+ imgUrl +')';
+
+  const imgUrl = canvas.toDataURL('image/png')
+  setTargetNode(targetNode, imgUrl)
+
+  const observer = new MutationObserver(mutationList => {
+    for (let mutation of mutationList) {
+      // dom节点属性修改
+      if (mutation.type === 'attributes') {
+        setTargetNode(targetNode, imgUrl)
+        break
+      }
+      if (mutation.type === 'childList') {
+        console.log('删除元素')
+        break
+      }
+    }
+  })
+  // 观察目标节点属性的变化
+  observer.observe(targetNode, { attributes: true, childList: true, subtree: true })
 }
 addWaterMark('测试水印');
 
