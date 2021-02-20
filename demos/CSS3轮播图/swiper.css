@@ -48,7 +48,7 @@ html, body{
 }
 .container .carousel-pagination {  
   position: absolute;
-  top: 300px;
+  top: 250px;
   left: 0;
   padding: 0;
   overflow: hidden;
@@ -78,6 +78,6 @@ html, body{
     transform: translateX(-80%);
   }
   100%{
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
 }

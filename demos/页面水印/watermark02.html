@@ -66,7 +66,7 @@ function addWaterMark(text) {
 
   const imgUrl = canvas.toDataURL('image/png')
   setTargetNode(targetNode, imgUrl)
-
+  // 监听DOM元素的变化
   const observer = new MutationObserver(mutationList => {
     for (let mutation of mutationList) {
       // dom节点属性修改
