@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IntersectionObserver懒加载图片</title>
+  <style>
+    .wrap{
+      height: 1000px;
+      background-color: #eee;
+    }
+    .item img{
+      max-height: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap"></div>
+  <ul class="list">
+    <li class="item"><img data-src="../../images/banner01.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/banner02.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/banner03.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper1.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper2.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper3.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper4.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper5.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper6.jpg" alt="image"></li>
+    <li class="item"><img data-src="../../images/swiper7.jpg" alt="image"></li>
+  </ul>
+  <script type="text/javascript">
+    // DOMContentLoaded 是HTML文档全部加载和解析完成之后被触发，无需等待样式表、图像和子框架加载完
+    document.addEventListener('DOMContentLoaded', function() {
+      // 浏览器是否存在 IntersectionObserver
+      if ('IntersectionObserver' in window) {
+        var imgs = document.getElementsByTagName('img');
+        var imageObserve = new IntersectionObserver((entries) => {
+          console.log(entries);
+          entries.forEach((entry) => {
+            // 判断该属性是否出现在视窗口内
+            if (entry.isIntersecting) {
+              // entry.target 获取dom元素
+              var img = entry.target;
+              console.log(img);
+              img.src = img.dataset.src;              
+              // 解除监视
+              imageObserve.unobserve(img);
+            } 
+          })
+        });
+        [...imgs].forEach((img) => {
+          // 开启监视每一个元素
+          imageObserve.observe(img);
+        })
+      }
+    });
+  </script>
+</body>
+</html>
