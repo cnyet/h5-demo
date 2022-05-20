@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+      html,body {
+        margin:0;
+        overflow:hidden;
+        width:100%;
+        height:100%;
+        cursor:none;
+        background:black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      var ctx = document.getElementById("canvas"),
+          content = ctx.getContext("2d"),
+          width,
+          height;
+      width = document.documentElement.clientWidth;
+      height = document.documentElement.clientHeight;
+      ctx.width = width;
+      ctx.height = height,
+      round = [],
+      initRoundPopulation = 80;
+      
+      function round_item(index, x, y){
+        this.index = index;
+        this.x = x;
+        this.y = y;
+        this.r = Math.random()*2 + 1;
+        var alpha = (Math.floor(Math.random()*10)+1)/10/2;
+        this.color = "rgba(255,255,255,"+ alpha +")";
+      }
+      
+      round_item.prototype.draw = function(){
+        content.fillStyle = this.color;
+        content.shadowBlur = this.r*2;
+        content.beginPath();
+        content.arc(this.x, this.y, this.r, 0, 2*Math.PI, false);
+        content.closePath();
+        content.fill();
+      }
+      round_item.prototype.move = function(){
+        this.y -= 0.15;
+        if(this.y <= -10){
+          this.y = height + 10;
+        }
+        this.draw();
+      }
+        
+      function animate(){
+        content.clearRect(0, 0, width, height);
+        for(var i in round){
+          round[i].move();
+        }
+        //在下一次重绘之前更新动画
+        requestAnimationFrame(animate);
+      }
+
+      function init(){
+        for(var i=0; i<initRoundPopulation; i++){
+          round[i] = new round_item(i, Math.random()*width, Math.random()*height);
+          round[i].draw();
+        }
+        animate();
+      } 
+      
+      init();
+    </script>
+  </body>
+</html>

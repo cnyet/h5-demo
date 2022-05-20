@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>文件MD5</title>
+</head>
+
+<body>
+  <input type="file" name="file" id="file" onchange="handleChange(this.files)">
+  <h3>MD5:
+    <span id="total"></span>
+  </h3>
+  <ul id="hash" style="list-style: decimal;"></ul>
+
+  <div class="actions">
+    <input type="file" id="input" class="input-file span5" />
+    <button type="button" onclick="doIncrementalTest()">生成</button>
+    <input type="button" id="clear" value="Clear" class="btn" />
+  </div>
+  <div id="log"></div>
+  <ul id="spark" style="list-style: decimal;"></ul>
+  <script type="text/javascript" src="./spark-md5.min.js"></script>
+  <script type="text/javascript" src="./file-md5.js"></script>
+</body>
+</html>
